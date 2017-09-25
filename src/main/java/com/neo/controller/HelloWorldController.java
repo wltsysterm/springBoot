@@ -1,5 +1,6 @@
-package com.wlt.controller;
+package com.neo.controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 public class HelloWorldController {
-    @RequestMapping("/hello")
-    public String index() {
+    @RequestMapping("/hello/{id}/{name}")
+    public String index(@PathVariable String id,@PathVariable String name) {
+    	System.out.println(id);
+    	System.out.println(name);
         return "Hello World";
     }
 }

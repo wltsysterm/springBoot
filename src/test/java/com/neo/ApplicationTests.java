@@ -1,4 +1,4 @@
-package com.wlt;
+package com.neo;
 
 
 import org.junit.Test;
