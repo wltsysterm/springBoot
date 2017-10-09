@@ -1,4 +1,4 @@
-package com.neo.interceptor;
+package com.neo.interceptor.configure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

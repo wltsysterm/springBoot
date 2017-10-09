@@ -18,7 +18,7 @@
 <script>
     function nowConfiguration() {
         $.ajax({
-            url:"/configure/nowConfiguration",
+            url:"/api/configure/nowConfiguration",
             success:function (data) {
                 $(".nowConfiguration").text(data);
             },

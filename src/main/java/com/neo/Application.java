@@ -4,6 +4,9 @@ package com.neo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.DispatcherServlet;
 
 /**
 * @EnableAutoConfiguration:spring boot的注解，一般只用于主类，
@@ -24,6 +27,27 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication        //same as @Configuration+@EnableAutoConfiguration+@ComponentScan
 @ServletComponentScan//监听器 过滤器启用开关
 public class Application {
+    /**
+     * 修改DispatcherServlet默认配置
+     * @param dispatcherServlet
+     */
+    @Bean //@Bean 用在方法上，告诉Spring容器，你可以从下面这个方法中拿到一个Bean
+    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
+        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet);
+        registration.getUrlMappings().clear();
+        registration.addUrlMappings("/api/*");
+        registration.addUrlMappings("/wlt/*");
+        registration.addUrlMappings("/*");
+//        registration.addUrlMappings("*.json");
+        return registration;
+    }
+//    /**
+//     * 使用代码注册Servlet（不需要@ServletComponentScan注解）
+//     */
+//    @Bean
+//    public ServletRegistrationBean servletRegistrationBean() {
+//        return new ServletRegistrationBean(new MyServlet(), "/xs/*");// ServletName默认值为首字母小写，即myServlet
+//    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
