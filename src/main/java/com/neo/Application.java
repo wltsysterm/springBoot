@@ -3,6 +3,7 @@ package com.neo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
 * @EnableAutoConfiguration:spring boot的注解，一般只用于主类，
@@ -21,6 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 */
 @SpringBootApplication        //same as @Configuration+@EnableAutoConfiguration+@ComponentScan
+@ServletComponentScan//监听器 过滤器启用开关
 public class Application {
 
 	public static void main(String[] args) {

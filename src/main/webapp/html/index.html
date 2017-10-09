@@ -18,7 +18,7 @@
 <script>
     function nowConfiguration() {
         $.ajax({
-            url:"/nowConfiguration",
+            url:"/configure/nowConfiguration",
             success:function (data) {
                 $(".nowConfiguration").text(data);
             },
@@ -29,7 +29,7 @@
     };
     function selfConfiguration() {
         $.ajax({
-            url:"/selfConfiguration",
+            url:"/configure/selfConfiguration",
             success:function (data) {
                 $(".selfConfiguration").text(data);
             },

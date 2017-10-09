@@ -1,4 +1,4 @@
-package com.neo.common;
+package com.neo.datasource.env;
 
 import java.util.Properties;
 
@@ -33,7 +33,7 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 	@autowired:Spring 2.5 引入了 @Autowired 注释，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
 这样之后，在项目中再使用springboot就和在ssm中（配置完成后）使用一样了。
  */
-@Configuration    //该注解类似于spring配置文件
+@Configuration    //该注解类似于spring配置文件 注释掉暂停使用这个类
 @MapperScan(basePackages="com.neo.mapper")
 public class MyBatisConfig {
     
@@ -65,7 +65,7 @@ public class MyBatisConfig {
         //下边两句仅仅用于*.xml文件，如果整个持久层操作不需要使用到xml文件的话（只用注解就可以搞定），则不加
         fb.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));//指定基包
         fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapperLocations")));//指定xml文件位置
-        
+
         return fb.getObject();
     }
 
