@@ -10,6 +10,9 @@
 <h4>多环境配置文件使用:</h4>
 <a onclick="nowConfiguration();">点我获取当前环境-</a>
 当前环境：<span class="nowConfiguration"></span>
+<h4>自定义配置文件:</h4>
+<a onclick="selfConfiguration();">点我获取配置文件内容-</a>
+：<span class="selfConfiguration"></span>
 </body>
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script>
@@ -18,6 +21,17 @@
             url:"/nowConfiguration",
             success:function (data) {
                 $(".nowConfiguration").text(data);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function selfConfiguration() {
+        $.ajax({
+            url:"/selfConfiguration",
+            success:function (data) {
+                $(".selfConfiguration").text(data);
             },
             error:function (e) {
                 alert(JSON.stringify(e));

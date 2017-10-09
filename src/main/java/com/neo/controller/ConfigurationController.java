@@ -1,6 +1,7 @@
 package com.neo.controller;
 
-import com.neo.domain.ConfiProperties;
+import com.neo.domain.NowConfiguration;
+import com.neo.domain.SelfConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConfigurationController {
     @Autowired
-    private ConfiProperties confiProperties;
+    private NowConfiguration nowConfiguration;
+    @Autowired
+    private SelfConfiguration selfConfiguration;
     @RequestMapping("/nowConfiguration")
     public String nowConfiguration(){
-        return confiProperties.getName();
+        return nowConfiguration.getName();
+    }
+
+    @RequestMapping("/selfConfiguration")
+    public String selfConfiguration(){
+        return selfConfiguration.getName();
     }
 }
