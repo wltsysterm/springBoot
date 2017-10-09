@@ -6,5 +6,25 @@
 </head>
 <body>
 <h1>this is the default page setting by DefaultView.java</h1>
+<hr/>
+<h4>多环境配置文件使用:</h4>
+<a onclick="nowConfiguration();">点我获取当前环境-</a>
+当前环境：<span class="nowConfiguration"></span>
 </body>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script>
+    function nowConfiguration() {
+        $.ajax({
+            url:"/nowConfiguration",
+            success:function (data) {
+                $(".nowConfiguration").text(data);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+
+
+</script>
 </html>
