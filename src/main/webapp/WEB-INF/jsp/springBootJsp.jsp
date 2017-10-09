@@ -22,10 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
   </head>
   
-  <body>
+  <body style="background-color: darkgreen;margin: 0 auto;">
     <div id="name"></div>
     <button onclick="test();">获取用户信息==autowire自动注入属性方式</button>
     <button onclick="test1();">插入用户信息==</button>
+    <button onclick="test2();">获取application.properties信息 </button>
   </body>
   <script type="text/javascript" src="<%=basePath%>js/jquery-1.11.0.min.js"></script>
   <script type="text/javascript">
