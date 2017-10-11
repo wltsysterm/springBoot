@@ -22,8 +22,15 @@
         <tr><td>name属性值：</td><td><input name="name" value=></td></tr>
     </table>
 </form>
-<a onclick="annotionValide();">点我效验自定义注解-</a>
+<a onclick="annotionValide();">点我-</a>
 ：<span class="annotionValide"></span>
+
+<h4>springboot集成简单Mybatis:</h4>
+<a onclick="mybatisSimple();">点我-</a>
+：<span class="mybatisSimple"></span>
+<h4>分页插件和通用Mapper集成:</h4>
+<a onclick="mybatisPage();">点我-</a>
+：<span class="mybatisPage"></span>
 </body>
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script>
@@ -57,6 +64,19 @@
             url:"/api/annotionValide",
             success:function (data) {
                 $(".annotionValide").text(data.message);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function mybatisSimple() {
+        $.ajax({
+            type:"POST",
+//            data:$("#annotionValide").serialize(),
+            url:"/api/getAllCity",
+            success:function (data) {
+                $(".mybatisSimple").text(JSON.stringify(data));
             },
             error:function (e) {
                 alert(JSON.stringify(e));

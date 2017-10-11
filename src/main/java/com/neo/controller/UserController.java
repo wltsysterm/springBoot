@@ -32,6 +32,10 @@ public class UserController {
     public User getUser() {
         return userService.getUser();
     }
+    @RequestMapping("/getUserByPage")
+    public Object getUserByPage() {
+        return userService.getUserByPage();
+    }
     @RequestMapping(value="/addUser",method=RequestMethod.POST)
     public int addUser(@RequestBody List<User> users) {
 //    	List<User> users = new ArrayList<User>();

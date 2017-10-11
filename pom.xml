@@ -69,14 +69,9 @@
 
 		<!-- mybatis -->
 		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.2</version>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>RELEASE</version>
 		</dependency>
 		<!--c3p0连接池-->
 		<dependency>
@@ -108,15 +103,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- 创建jsp项目另外引入的包 end-->
-
-		<!--热部署-->
-		<!-- 必须修改为true，默认是false -->
-		<!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
-	<!--	<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>-->
 	</dependencies>
 
 	<build>
