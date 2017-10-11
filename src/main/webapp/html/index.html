@@ -28,7 +28,13 @@
 <h4>springboot集成简单Mybatis:</h4>
 <a onclick="mybatisSimple();">点我-</a>
 ：<span class="mybatisSimple"></span>
-<h4>分页插件和通用Mapper集成:</h4>
+<h4>springboot集成mybaits-plus:</h4>
+<form id="mybatisPage">
+    <table>
+        <tr><td>当前页：</td><td><input name="pageNum" value=></td></tr>
+        <tr><td>每页条数：</td><td><input name="pageSize" value=></td></tr>
+    </table>
+</form>
 <a onclick="mybatisPage();">点我-</a>
 ：<span class="mybatisPage"></span>
 </body>
@@ -83,8 +89,22 @@
             }
         });
     };
+    function mybatisPage() {
+        $.ajax({
+            type:"POST",
+            data:{pageSize:$("#mybatisPage input[name=pageSize]").val(),pageNum:$("#mybatisPage input[name=pageNum]").val()},
+            url:"/api/getCityByPage",
+            success:function (data) {
+                $(".mybatisPage").text(JSON.stringify(data));
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
     $(function () {
         $("#annotionValide")[0].reset();
+        $("#mybatisPage")[0].reset();
     });
 </script>
 </html>
