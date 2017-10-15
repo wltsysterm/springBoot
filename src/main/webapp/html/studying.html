@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>default html</title>
+    <style>
+        a{cursor: pointer;color: red;font-weight: bolder;}
+    </style>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bootstraptable/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/ionicons.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/_all-skins.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/animate.min.css">
+    <link rel="stylesheet" href="../lib/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../lib/select2/css/select2.min.css">
+</head>
+<body>
+<h1>this is the default page setting by DefaultMvcConfigure.java</h1>
+<hr/>
+<h4>多环境配置文件使用:</h4>
+<a onclick="nowConfiguration();">点我获取当前环境-</a>
+当前环境：<span class="nowConfiguration"></span>
+<h4>自定义配置文件:</h4>
+<a onclick="selfConfiguration();">点我获取配置文件内容-</a>
+：<span class="selfConfiguration"></span>
+<h4>自定义注解使用:</h4>
+<form id="annotionValide">
+    <table>
+        <tr><td>name属性值：</td><td><input name="name" value=></td></tr>
+    </table>
+</form>
+<a onclick="annotionValide();">点我-</a>
+：<span class="annotionValide"></span>
+
+<h4>springboot集成简单Mybatis:</h4>
+<a onclick="mybatisSimple();">点我-</a>
+：<span class="mybatisSimple"></span>
+<h4>springboot集成mybaits-plus:</h4>
+<form id="mybatisPage">
+    <table>
+        <tr><td>当前页：</td><td><input name="pageNum" value=></td></tr>
+        <tr><td>每页条数：</td><td><input name="pageSize" value=></td></tr>
+    </table>
+</form>
+<a onclick="mybatisPage();">点我-</a>
+：<span class="mybatisPage"></span>
+</body>
+<script src="../lib/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../lib/validate/jquery.validate.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../lib/bootstraptable/js/bootstrap-table.min.js"></script>
+<script src="../js/future.js"></script>
+<script src="../lib/select2/js/select2.min.js"></script>
+<script src="../js/locale/zh.js"></script>
+<script src="../lib/fastclick/fastclick.min.js"></script>
+<script src="../lib/adminlte/js/adminlte.min.js"></script>
+<script src="../lib/vue/vue.min.js"></script>
+<script>
+    function nowConfiguration() {
+        $.ajax({
+            url:"/api/configure/nowConfiguration",
+            success:function (data) {
+                $(".nowConfiguration").text(data);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function selfConfiguration() {
+        $.ajax({
+            url:"/configure/selfConfiguration",
+            success:function (data) {
+                $(".selfConfiguration").text(data);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function annotionValide() {
+        $.ajax({
+            type:"POST",
+//            data:$("#annotionValide").serialize(),
+            data:{name:$("#annotionValide input[name='name']").val()},
+            url:"/api/annotionValide",
+            success:function (data) {
+                $(".annotionValide").text(data.message);
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function mybatisSimple() {
+        $.ajax({
+            type:"POST",
+//            data:$("#annotionValide").serialize(),
+            url:"/api/getAllCity",
+            success:function (data) {
+                $(".mybatisSimple").text(JSON.stringify(data));
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    function mybatisPage() {
+        $.ajax({
+            type:"POST",
+            data:{pageSize:$("#mybatisPage input[name=pageSize]").val(),pageNum:$("#mybatisPage input[name=pageNum]").val()},
+            url:"/api/getCityByPage",
+            success:function (data) {
+                $(".mybatisPage").text(JSON.stringify(data));
+            },
+            error:function (e) {
+                alert(JSON.stringify(e));
+            }
+        });
+    };
+    $(function () {
+        $("#annotionValide")[0].reset();
+        $("#mybatisPage")[0].reset();
+    });
+</script>
+</html>

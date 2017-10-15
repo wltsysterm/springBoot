@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="background-color: darkgreen;margin: 0 auto;">
   <h1>this is the default page setting by DefaultView.java</h1>
   </body>
-  <script type="text/javascript" src="<%=basePath%>js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="<%=basePath%>lib/jQuery/jquery-2.2.3.min.js"></script>
   <script type="text/javascript">
   	var path = '<%=path%>';
   </script>

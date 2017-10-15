@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <button onclick="test1();">插入用户信息==</button>
     <button onclick="test2();">获取application.properties信息 </button>
   </body>
-  <script type="text/javascript" src="<%=basePath%>js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="<%=basePath%>lib/jQuery/jquery-2.2.3.min.js"></script>
   <script type="text/javascript">
   	var path = '<%=path%>';
   	function test(){
