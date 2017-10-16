@@ -25,7 +25,11 @@ public class DefaultMvcConfigure extends WebMvcConfigurerAdapter {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
         super.addViewControllers(registry);
     }
-
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("*.html")
+//                .addResourceLocations("classpath:/html/");
+//    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //众多的拦截器组成了一个拦截器链
