@@ -321,26 +321,33 @@
 		var target = $(event.target);
 		var node = this.findNode(target);
 		if (!node || node.state.disabled) return;
-		
-		var classList = target.attr('class') ? target.attr('class').split(' ') : [];
-		if ((classList.indexOf('expand-icon') !== -1)) {
 
-			this.toggleExpandedState(node, _default.options);
-			this.render();
-		}
-		else if ((classList.indexOf('check-icon') !== -1)) {
-			
+		var classList = target.attr('class') ? target.attr('class').split(' ') : [];
+
+		//只有点击收缩和拓展的图标的时候才进行收缩和拓展动作
+		// if ((classList.indexOf('expand-icon') !== -1)) {
+        //
+		// 	this.toggleExpandedState(node, _default.options);
+		// 	this.render();
+		// }
+		// else
+
+		//全部点击都自动收缩和拓展
+        // this.toggleExpandedState(node, _default.options);
+        // this.render();
+
+		if ((classList.indexOf('check-icon') !== -1)) {
 			this.toggleCheckedState(node, _default.options);
 			this.render();
 		}
 		else {
 			
-			if (node.selectable) {
-				this.toggleSelectedState(node, _default.options);
-			} else {
-				this.toggleExpandedState(node, _default.options);
-			}
-
+			// if (node.selectable) {
+			// 	this.toggleSelectedState(node, _default.options);
+			// } else {
+			// 	this.toggleExpandedState(node, _default.options);
+			// }
+            this.toggleExpandedState(node, _default.options);
 			this.render();
 		}
 	};
@@ -429,6 +436,15 @@
 	Tree.prototype.toggleCheckedState = function (node, options) {
 		if (!node) return;
 		this.setCheckedState(node, !node.state.checked, options);
+
+		//添加选择递归
+		if(!node.state.checked){
+            this.unCheckAllChild(node,_default.options);
+            this.unCheckParents(node,_default.options);
+		}else{
+            this.checkAllChild(node,_default.options);
+            this.checkParents(node,_default.options);
+		}
 	};
 
 	Tree.prototype.setCheckedState = function (node, state, options) {
@@ -731,6 +747,7 @@
 			});
 	};
 
+
 	/**
 		Returns an array of selected nodes.
 		@returns {Array} nodes - Selected nodes
@@ -947,11 +964,67 @@
 	Tree.prototype.checkAll = function (options) {
 		var identifiers = this.findNodes('false', 'g', 'state.checked');
 		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
-			this.setCheckedState(node, true, options);
+				this.setCheckedState(node, true, options);
 		}, this));
 
 		this.render();
 	};
+
+    /**
+     Check all child tree nodes
+	 @param {object} node
+     @param {optional Object} options
+     */
+    Tree.prototype.checkAllChild = function (node,options) {
+        var _this = this;
+        $.each(node.nodes, function checkChildren(index, node) {
+            _this.setCheckedState(node, true, options);
+            if(node.nodes){
+                _this.checkAllChild(node,options);
+			}
+        });
+    };
+
+    /**
+     Check all parent tree nodes
+     @param {object} node
+     @param {optional Object} options
+     */
+    Tree.prototype.checkParents= function (node,options) {
+		var parent = this.getParent(node);
+		if(parent){
+            this.setCheckedState(parent, true, options);
+			this.checkParents(parent,options);
+		}
+    };
+
+    /**
+     unCheck all parent tree nodes
+     @param {object} node
+     @param {optional Object} options
+     */
+    Tree.prototype.unCheckParents= function (node,options) {
+        var parent = this.getParent(node);
+        if(parent){
+            this.setCheckedState(parent, false, options);
+            this.checkParents(parent,options);
+        }
+    };
+
+    /**
+     unCheck all child tree nodes
+     @param {object} node
+     @param {optional Object} options
+     */
+    Tree.prototype.unCheckAllChild = function (node,options) {
+        var _this = this;
+        $.each(node.nodes, function checkChildren(index, node) {
+            _this.setCheckedState(node, false, options);
+            if(node.nodes){
+                _this.unCheckAllChild(node,options);
+            }
+        });
+    };
 
 	/**
 		Check a given tree node
@@ -1085,13 +1158,14 @@
 
 		$.each(identifiers, $.proxy(function (index, identifier) {
 			callback(this.identifyNode(identifier), options);
-		}, this));	
+		}, this));
 	};
 
 	/*
 		Identifies a node from either a node id or object
 	*/
 	Tree.prototype.identifyNode = function (identifier) {
+		//if identifier is a nodeId then return nodes[nodeId]
 		return ((typeof identifier) === 'number') ?
 						this.nodes[identifier] :
 						identifier;

@@ -52,7 +52,9 @@
 				  </label>
 			  </div>
 			  <button type="button" class="btn btn-success" id="btn-search">Search</button>
-			  <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button>
+			  <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button><br/>
+			  <button type="button" class="btn btn-success" id="btn-check-all">Check All</button>
+			  <button type="button" class="btn btn-danger" id="btn-uncheck-all">Uncheck All</button>
 			  <!-- </form> -->
 		  </div>
         <div class="col-sm-4">
@@ -136,6 +138,7 @@
                 var alternateData = [
                     {
                         text: 'Parent 1',
+						selected:true,
                         tags: ['2'],
                         nodes: [
                             {
@@ -187,10 +190,10 @@
 
 
 			var $Tree=$('#treeview1').treeview({
-//            expandIcon: "glyphicon glyphicon-stop",
-//            collapseIcon: "glyphicon glyphicon-unchecked",
+			expandIcon: 'glyphicon glyphicon-menu-right',
+			collapseIcon: 'glyphicon glyphicon-menu-down',
 //            nodeIcon: "glyphicon glyphicon-user",
-            color: "yellow",
+//            color: "yellow",
 //            backColor: "purple",
 //            onhoverColor: "orange",
 //            borderColor: "red",
@@ -200,12 +203,14 @@
 //            selectedColor: "yellow",
 //            selectedBackColor: "darkorange",
 			color:"green",
+			levels:1,
             enableLinks: true,
 			data: alternateData,
+			showCheckbox:true,
             onNodeCollapsed: function(event, node) {
                 $('#output').prepend('<p>' + node.text + ' was collapsed</p>');
             },
-            onNodeExpanded: function (event, node) {
+            onNodeExpanded: function  (event, node) {
                 $('#output').prepend('<p>' + node.text + ' was expanded</p>');
             },
             onNodeSelected: function(event, node) {
@@ -216,6 +221,22 @@
             }
         });
 
+
+                var search = function(e) {
+                    var pattern = $('#input-search').val();
+                    var options = {
+                        ignoreCase: $('#chk-ignore-case').is(':checked'),
+                        exactMatch: $('#chk-exact-match').is(':checked'),
+                        revealResults: $('#chk-reveal-results').is(':checked')
+                    };
+                    var results = $Tree.treeview('search', [ pattern, options ]);
+
+                    var output = '<p>' + results.length + ' matches found</p>';
+                    $.each(results, function (index, result) {
+                        output += '<p>- ' + result.text + '</p>';
+                    });
+                    $('#output').html(output);
+                }
 			$('#btn-search').on('click', search);
 			$('#input-search').on('keyup', search);
 
@@ -224,22 +245,15 @@
 				$('#input-search').val('');
 				$('#output').html('');
 			});
-  		});
-		var search = function(e) {
-			var pattern = $('#input-search').val();
-			var options = {
-				ignoreCase: $('#chk-ignore-case').is(':checked'),
-				exactMatch: $('#chk-exact-match').is(':checked'),
-				revealResults: $('#chk-reveal-results').is(':checked')
-			};
-			var results = $Tree.treeview('search', [ pattern, options ]);
-
-			var output = '<p>' + results.length + ' matches found</p>';
-			$.each(results, function (index, result) {
-				output += '<p>- ' + result.text + '</p>';
+			// Check/uncheck all
+			$('#btn-check-all').on('click', function (e) {
+				$Tree.treeview('checkAll', { silent: false});
 			});
-			$('#output').html(output);
-		}
+
+			$('#btn-uncheck-all').on('click', function (e) {
+				$Tree.treeview('uncheckAll', { silent: false });
+			});
+  		});
 	  	</script>
 </body>
 </html>
