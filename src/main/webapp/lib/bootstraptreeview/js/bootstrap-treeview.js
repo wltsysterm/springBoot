@@ -129,6 +129,7 @@
 			// Expand / collapse methods
 			checkAll: $.proxy(this.checkAll, this),
 			checkNode: $.proxy(this.checkNode, this),
+			checkNodeByIds: $.proxy(this.checkNodeByIds, this),
 			uncheckAll: $.proxy(this.uncheckAll, this),
 			uncheckNode: $.proxy(this.uncheckNode, this),
 			toggleNodeChecked: $.proxy(this.toggleNodeChecked, this),
@@ -342,8 +343,8 @@
 		}
 		else {
 			
-			// if (node.selectable) {
-			// 	this.toggleSelectedState(node, _default.options);
+			if (node.selectable)
+				this.toggleSelectedState(node, _default.options);
 			// } else {
 			// 	this.toggleExpandedState(node, _default.options);
 			// }
@@ -534,8 +535,9 @@
 				.addClass(node.state.selected ? 'node-selected' : '')
 				.addClass(node.searchResult ? 'search-result' : '') 
 				.attr('data-nodeid', node.nodeId)
-				.attr('style', _this.buildStyleOverride(node));
-
+				.attr('style', _this.buildStyleOverride(node))
+            	.attr('id', node.id)
+            	.attr('pid', node.pid);
 			// Add indent/spacer to mimic tree structure
 			for (var i = 0; i < (level - 1); i++) {
 				treeItem.append(_this.template.indent);
@@ -1038,7 +1040,12 @@
 
 		this.render();
 	};
-
+    /**
+     */
+    Tree.prototype.checkNodeByIds = function (ids) {
+		var result = this.findNodesByIds(ids.ids);
+		this.checkNode(result);
+    };
 	/**
 		Uncheck all tree nodes
 		@param {optional Object} options
@@ -1252,10 +1259,23 @@
 		return $.grep(this.nodes, function (node) {
 			var val = _this.getNodeValue(node, attribute);
 			if (typeof val === 'string') {
+				console.log("==="+val.match(new RegExp(pattern, modifier)));
 				return val.match(new RegExp(pattern, modifier));
 			}
 		});
 	};
+
+    /**
+     Find nodes that match a given ids array
+     */
+    Tree.prototype.findNodesByIds = function (ids) {
+        var _this = this;
+        return $.grep(this.nodes, function (node) {
+            var i = ids.indexOf(node.id);
+        	return i==-1?false:true;
+        });
+    };
+
 
 	/**
 		Recursive find for retrieving nested attributes values

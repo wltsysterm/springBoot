@@ -55,6 +55,7 @@
 			  <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button><br/>
 			  <button type="button" class="btn btn-success" id="btn-check-all">Check All</button>
 			  <button type="button" class="btn btn-danger" id="btn-uncheck-all">Uncheck All</button>
+			  <button type="button" class="btn btn-danger" id="btn-check-allByIds">check-allByIds</button>
 			  <!-- </form> -->
 		  </div>
         <div class="col-sm-4">
@@ -137,41 +138,57 @@
 
                 var alternateData = [
                     {
+                        id:'11',
+						pid:'0',
                         text: 'Parent 1',
 						selected:true,
                         tags: ['2'],
                         nodes: [
                             {
+                                id:'111',
+                                pid:'11',
                                 text: 'Child 1',
                                 tags: ['3'],
                                 nodes: [
                                     {
+                                        id:'1111',
+                                        pid:'111',
                                         text: 'Grandchild 1',
                                         tags: ['6']
                                     },
                                     {
+                                        id:'1112',
+                                        pid:'111',
                                         text: 'Grandchild 2',
                                         tags: ['3']
                                     }
                                 ]
                             },
                             {
+                                id:'112',
+                                pid:'11',
                                 text: 'Child 2',
                                 tags: ['3']
                             }
                         ]
                     },
                     {
+                        id:'12',
+                        pid:'0',
                         text: 'Parent 2',
                         tags: ['7']
                     },
                     {
+                        id:'13',
+                        pid:'0',
                         text: 'Parent 3',
                         icon: 'glyphicon glyphicon-earphone',
                         href: '#demo',
                         tags: ['11']
                     },
                     {
+                        id:'14',
+                        pid:'0',
                         text: 'Parent 4',
                         icon: 'glyphicon glyphicon-cloud-download',
                         href: '/demo.html',
@@ -179,11 +196,13 @@
                         selected: true
                     },
                     {
+                        id:'15',
+                        pid:'0',
                         text: 'Parent 5',
                         icon: 'glyphicon glyphicon-certificate',
                         color: 'pink',
                         backColor: 'red',
-                        href: 'http://www.tesco.com',
+                        href: '',
                         tags: ['available','0']
                     }
                 ];
@@ -250,6 +269,9 @@
 				$Tree.treeview('checkAll', { silent: false});
 			});
 
+                $('#btn-check-allByIds').on('click', function (e) {
+                    $Tree.treeview('checkNodeByIds',{ids:['11','12','13']});
+                });
 			$('#btn-uncheck-all').on('click', function (e) {
 				$Tree.treeview('uncheckAll', { silent: false });
 			});
