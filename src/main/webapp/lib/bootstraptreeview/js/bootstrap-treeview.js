@@ -316,7 +316,6 @@
 	};
 
 	Tree.prototype.clickHandler = function (event) {
-
 		if (!this.options.enableLinks) event.preventDefault();
 
 		var target = $(event.target);
@@ -993,6 +992,8 @@
      @param {optional Object} options
      */
     Tree.prototype.checkParents= function (node,options) {
+    	//if siblings is checked then return
+
 		var parent = this.getParent(node);
 		if(parent){
             this.setCheckedState(parent, true, options);
@@ -1001,15 +1002,36 @@
     };
 
     /**
+     identify whether current node has checked siblings
+     @param {object} node
+     */
+    Tree.prototype.identifyCheckedSiblings= function (node) {
+		var nodes = this.getSiblings(node);
+		var flag = false;
+		if(nodes){
+            $.each(nodes,function (index,node) {
+				if(node["state"].checked){
+					flag = true;
+					return false;
+                }
+            });
+		}
+		return flag;
+	}
+
+    /**
      unCheck all parent tree nodes
      @param {object} node
      @param {optional Object} options
      */
     Tree.prototype.unCheckParents= function (node,options) {
+        if(this.identifyCheckedSiblings(node)){
+			return;
+        }
         var parent = this.getParent(node);
         if(parent){
             this.setCheckedState(parent, false, options);
-            this.checkParents(parent,options);
+            this.unCheckParents(parent,options);
         }
     };
 
@@ -1259,7 +1281,6 @@
 		return $.grep(this.nodes, function (node) {
 			var val = _this.getNodeValue(node, attribute);
 			if (typeof val === 'string') {
-				console.log("==="+val.match(new RegExp(pattern, modifier)));
 				return val.match(new RegExp(pattern, modifier));
 			}
 		});
