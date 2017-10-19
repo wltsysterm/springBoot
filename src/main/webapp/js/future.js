@@ -4,33 +4,44 @@ var future = {};
  * 调整高度
  */
 $(document).ready(function () {
-    var isExist = false;
-    $('head link').each(function(index,item){
-        if ($(item).attr('href').indexOf("animate")>0){
-            isExist = true;
+    // var isExist = false;
+    // $('head link').each(function(index,item){
+    //     if ($(item).attr('href').indexOf("animate")>0){
+    //         isExist = true;
+    //     }
+    // });
+    // if (!isExist){
+    //     $($('head')[0]).append('<link rel="stylesheet" href="../../lib/adminlte/css/animate.min.css">');
+    // }
+    // $('body').find('.box').css('height',window.innerHeight - 10);
+});
+// /**
+//  * 窗口调整
+//  */
+// $(window).resize(function() {
+//     $('body').find('.box').css('height',window.innerHeight - 10);
+// });
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) {
+            iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
         }
-    });
-    if (!isExist){
-        $($('head')[0]).append('<link rel="stylesheet" href="../../lib/adminlte/css/animate.min.css">');
     }
-    $('body').find('.box').css('height',window.innerHeight - 10);
-});
-/**
- * 窗口调整
- */
-$(window).resize(function() {
-    $('body').find('.box').css('height',window.innerHeight - 10);
-});
+};
 
+window.onload = function () {
+    setIframeHeight(document.getElementById('external-frame'));
+};
 /**
  * 自定义错误提示位置
  */
-$.validator.setDefaults({
-    errorPlacement:function(error,element) {
-        //最后插入
-        error.appendTo(element.parent());
-    }
-});
+// $.validator.setDefaults({
+//     errorPlacement:function(error,element) {
+//         //最后插入
+//         error.appendTo(element.parent());
+//     }
+// });
 
 window.future = future;
 /**

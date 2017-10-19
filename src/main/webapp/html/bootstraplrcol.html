@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>default html</title>
+    <style>
+        a{cursor: pointer;color: red;font-weight: bolder;}
+    </style>
+    <style type="text/css">
+       #tabUl .glyphicon-remove{display: none;color: red;}
+       #tabUl .glyphicon-remove:hover{cursor: pointer;color: white;background-color: red;}
+       #tabUl>li[class='']>a{cursor: pointer;border: 1px solid #ddd;border-radius: 4px 4px 0 0;}
+       #tabUl>li[class='active']>a{background-color: #428bca;color: white;}
+       #tabUl>li:hover >a>i {display: block;}
+
+        /*header css*/
+        header .statisticInfo .user i{
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            font-size: 17px;
+            text-align: center;
+            background-color: red;
+            border-radius: 50px;
+            box-shadow: inset 0px 0px 1px #777;
+            color: white;
+        }
+    </style>
+    <!--menu.css是submenu的另一种样式，是鼠标悬浮显示样式-->
+    <!--<link rel="stylesheet" href="../css/menu.css">-->
+    <!--menu.css是submenu的另一种样式，是鼠标点击显示样式-->
+    <link rel="stylesheet" href="../lib/bootstrapsubmenu/css/bootstrap-submenu.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bootstraptreeview/css/bootstrap-treeview.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../lib/adminlte/css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/future.css">
+</head>
+<body>
+<div class="container w100p p0">
+    <!--header-->
+    <header class="col-lg-12 h100 p0" style="background-color: black;position: fixed;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;z-index: 1000;">
+        <div class="col-lg-8">
+        </div>
+        <div class="col-lg-2 statisticInfo">
+            <div class="user">
+                <div class="fl">
+                    <i class="glyphicon glyphicon-signal"></i>
+                </div>
+                <div class="fl">
+                    <p><a href="#">3000</a> <em>用户</em></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </header>
+    <!--content-->
+    <section class="col-lg-12 mt100 p0">
+        <nav id="sidebar" class="col-lg-2 p0">
+                <div id="treeview" class="w100p"></div>
+        </nav>
+        <article class="col-lg-10 column p0">
+                <ul class="nav nav-tabs" role="tablist" id="tabUl">
+                </ul>
+                <section class="tab-content" style="width:100%;height: 100%">
+                </section>
+        </article>
+    </section>
+    <!--footer-->
+</div>
+</body>
+<script src="../lib/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../js/future.js"></script>
+<script src="../lib/bootstrapsubmenu/js/bootstrap-submenu.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../lib/bootstraptreeview/js/bootstrap-treeview.js"></script>
+<script src="../js/bootstrap-closable-tab.js"></script>
+<script>
+    function add(id,name,uri){
+        var item = {'id':id,'name':name,'url':uri,'closable':true};
+        closableTab.addTab(item);
+    }
+$(function () {
+    var item = {'id':'1','name':'首页','url':'../html/studying.html','closable':false};
+    closableTab.addTab(item);
+    var alternateData = [
+        {
+            id:'11',
+            pid:'0',
+            text: 'Parent 1',
+            selected:true,
+            tags: ['2'],
+            nodes: [
+                {
+                    id:'111',
+                    pid:'11',
+                    text: 'Child 1',
+                    tags: ['3'],
+                    nodes: [
+                        {
+                            id:'1111',
+                            pid:'111',
+                            text: 'Grandchild 1',
+                            href:'../html/bootstrapview.html',
+                            tags: ['6']
+                        },
+                        {
+                            id:'1112',
+                            pid:'111',
+                            text: 'Grandchild 2',
+                            href:'../html/studying.html',
+                            tags: ['3']
+                        }
+                    ]
+                },
+                {
+                    id:'112',
+                    pid:'11',
+                    text: 'Child 2',
+                    href:'../html/studying.html',
+                    tags: ['3']
+                }
+            ]
+        },
+        {
+            id:'15',
+            pid:'0',
+            text: 'Parent 5',
+            href:'../html/studying.html',
+            icon: 'glyphicon glyphicon-certificate',
+//            color: 'pink',
+//            backColor: 'red',
+            tags: ['available','0']
+        }
+    ];
+    var $Tree=$('#treeview').treeview({
+        expandIcon: 'glyphicon glyphicon-menu-right',
+        collapseIcon: 'glyphicon glyphicon-menu-down',
+//            nodeIcon: "glyphicon glyphicon-user",
+//            color: "yellow",
+//            backColor: "purple",
+//            onhoverColor: "orange",
+//            borderColor: "red",
+//            showBorder: true,
+//            showTags: true,
+//            highlightSelected: true,
+//            selectedColor: "yellow",
+//            selectedBackColor: "darkorange",
+        color:"green",
+        levels:1,
+        enableLinks: false,
+        data: alternateData,
+        showCheckbox:true,
+        onNodeSelected: function(event, node) {
+            if(node.href && node.href.length!=0){
+                add(node.id,node.text,node.href)
+            }
+        }
+    });
+});
+</script>
+</html>

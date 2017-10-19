@@ -24,275 +24,36 @@
 </head>
 <body ng-app="page2">
 <div class="container">
-    <button class="btn btn-default" type="button" onclick="javascript:window.open('../html/bootstrapview.html')">
-        bootstraptreeview
-    </button>
-    <div class="row" ng-controller="NavbarCtrl">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">多级菜单导航</a>
-            </div>
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi Level <b class="caret"></b></a>
-                        <ul class="dropdown-menu menu-top">
-                            <li><a href="#">Level 1</a></li>
-                            <li class="dropdown-submenu"> <a tabindex="-1" href="#">More options</a>
-                                <ul class="dropdown-menu">gi
-                                    <li><a tabindex="-1" href="#">Level都发发呆发呆发呆发大富大发发呆 2</a>
-                                    </li>
-                                    <li class="dropdown-submenu"> <a href="#">More..</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Level 3</a>
-                                            </li>
-                                            <li><a href="#">Level 3</a>
-                                            </li>
-                                            <li class="dropdown-submenu"> <a href="#">More..</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Level 4</a>
-                                                    </li>
-                                                    <li><a href="#">Level 4</a>
-                                                    </li>
-                                                    <li class="dropdown-submenu"> <a href="#">More..</a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">Level 5</a>
-                                                            </li>
-                                                            <li><a href="#">Level 5</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Level 2</a>
-                                    </li>
-                                    <li><a href="#">Level 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Level 1</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-
-<hr/>
-<div class="row">
-    <div class="col-sm-4 col-sm-offset-2 m-b">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu>
-                Dropdown <span class="caret"></span>
+    <form class="form-horizontal" style="text-align: center;">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-info btn-lg btn-block" type="button" onclick="javascript:window.open('../html/bootstrapview.html')">
+                bootstraptreeview
             </button>
-            <!--<a href="#" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu>More..</a>-->
-            <ul class="dropdown-menu">
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another sub action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li><a tabindex="2">Something else here</a></li>
-                        <li class="disabled"><a tabindex="-1">Disabled action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown-header">Dropdown header</li>
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Another action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li><a tabindex="0">Another sub action</a></li>
-                        <li><a tabindex="0">Something else here</a></li>
-                    </ul>
-                </li>
-                <li><a tabindex="0">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="0">Separated link</a></li>
-            </ul>
         </div>
     </div>
-
-    <div class="col-sm-4 m-b">
-        <div class="dropdown pull-right">
-            <button class="btn btn-default" type="button" data-toggle="dropdown" data-submenu>
-                Dropdown <span class="caret"></span>
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-danger btn-lg btn-block" type="button" onclick="location.href='../html/bootstrapsubmenu.html'">
+                bootstrapsubmenu
             </button>
-
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another sub action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li><a tabindex="0">Something else here</a></li>
-                        <li class="disabled"><a tabindex="-1">Disabled action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown-header">Dropdown header</li>
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Another action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li><a tabindex="0">Another sub action</a></li>
-                        <li><a tabindex="0">Something else here</a></li>
-                    </ul>
-                </li>
-                <li><a tabindex="0">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="0">Separated link</a></li>
-            </ul>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-4 col-sm-offset-2 m-b">
-        <div class="dropup">
-            <button class="btn btn-default" type="button" data-toggle="dropdown" data-submenu>
-                Dropup <span class="caret"></span>
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-warning btn-lg btn-block" type="button" onclick="location.href='../html/studying.html'">
+                后台学习
             </button>
-
-            <ul class="dropdown-menu">
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another sub action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li><a tabindex="0">Something else here</a></li>
-                        <li class="disabled"><a tabindex="-1">Disabled action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown-header">Dropdown header</li>
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Another action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li><a tabindex="0">Another sub action</a></li>
-                        <li><a tabindex="0">Something else here</a></li>
-                    </ul>
-                </li>
-                <li><a tabindex="0">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="0">Separated link</a></li>
-            </ul>
         </div>
     </div>
-
-    <div class="col-sm-4 m-b">
-        <div class="dropup pull-right">
-            <button class="btn btn-default" type="button" data-toggle="dropdown" data-submenu>
-                Dropup <span class="caret"></span>
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-danger btn-lg btn-block" type="button" onclick="location.href='../html/bootstraplrcol.html'">
+                bootstrap实现左右分栏
             </button>
-
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another sub action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li><a tabindex="0">Something else here</a></li>
-                        <li class=""><a tabindex="-1">Disabled action</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="0">Another action</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="0">Sub action</a></li>
-                                <li><a tabindex="0">Another sub action</a></li>
-                                <li><a tabindex="0">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown-header">Dropdown header</li>
-                <li class="dropdown-submenu">
-                    <a tabindex="0">Another action</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="0">Sub action</a></li>
-                        <li><a tabindex="0">Another sub action</a></li>
-                        <li><a tabindex="0">Something else here</a></li>
-                    </ul>
-                </li>
-                <li><a tabindex="0">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="0">Separated link</a></li>
-            </ul>
         </div>
     </div>
+    </form>
 </div>
 </body>
 <script src="../lib/jQuery/jquery-2.2.3.min.js"></script>
@@ -308,8 +69,5 @@
 <script src="../lib/adminlte/js/adminlte.min.js"></script>
 <script src="../lib/vue/vue.min.js"></script>
 <script>
-    $(function () {
-        $('[data-submenu]').submenupicker();
-    });
 </script>
 </html>
