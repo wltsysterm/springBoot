@@ -60,13 +60,16 @@ h3, h4, h5 {
 .t2 {
     text-indent: 2em;
 }
-.lh150 {
+.lh100 {
+    line-height: 100px;
+}
+.lh150p {
     line-height: 150%
 }
-.lh180 {
+.lh180p {
     line-height: 180%
 }
-.lh200 {
+.lh200p {
     line-height: 200%
 }
 .unl {

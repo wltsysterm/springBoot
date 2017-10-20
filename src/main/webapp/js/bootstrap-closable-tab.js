@@ -34,7 +34,7 @@ var closableTab = {
             }
 
             var tabpanel = '<div role="tabpanel" class="tab-pane" id="'+container+'" style="width: 100%;">'+
-                '<iframe  src="'+tabItem.url+'" id="tab_frame_2" frameborder="0" scrolling="no" width="100%"   onload="closableTab.frameLoad(this)"></iframe>'+
+                '<iframe  src="'+tabItem.url+'" id="tab_frame_2" frameborder="0" width="100%"   onload="closableTab.frameLoad(this)"></iframe>'+
                 '</div>';
 
 
