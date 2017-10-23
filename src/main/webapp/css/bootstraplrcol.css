@@ -1,0 +1,89 @@
+#tabUl .glyphicon-remove{display: none;color: red;}
+#tabUl .glyphicon-remove:hover{cursor: pointer;color: white;background-color: red;}
+#tabUl>li[class='']>a{cursor: pointer;border: 1px solid #ddd;border-radius: 4px 4px 0 0;}
+#tabUl>li[class='active']>a{background-color: #428bca;color: white;}
+#tabUl>li:hover >a>i {display: block;}
+
+/*header css*/
+header .statisticInfo{
+    height: 45px;
+    margin-top: 26px;
+}
+header .statisticInfo .user{
+    float: left;
+    color: white;
+    width: 75px;
+}
+header .statisticInfo .user i{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 1px #777;
+}
+header .statisticInfo .user p{
+    line-height: 16px;
+    font-size: 11px;
+    /*margin-top: 4px;*/
+    font-weight: bolder;
+}
+header .statisticInfo .fr,header .statisticInfo .fl{
+    width: 48%;
+}
+header .memberInfo{
+    margin-top: 15px;
+    color: white;
+}
+header .memberInfo .member,header .memberInfo>em{
+    /*height: 95px;*/
+    font-weight: bolder;
+    font-size: 13px;
+    margin-top: 20px;
+}
+header .memberInfo img{
+    width: 45px;
+    height: 45px;
+}
+header .memberInfo .downicon:hover{
+    color: red;
+    cursor: pointer;
+}
+
+header .memberInfo .member .header-down-menu{
+    min-width: 30px;
+    background-color: #1a2226;
+}
+header .memberInfo .member .header-down-menu  a{
+    color: white;
+    background-color: transparent;
+    font-size: 11px;
+}
+header .memberInfo .member .header-down-menu  a:hover{
+    color: red;
+    cursor: pointer;
+}
+
+/*toTop css*/
+.totop {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 104400;
+    background: #0993d3 !important;
+}
+.totop a, .totop a:visited{
+    display: block;
+    width: 60px;
+    height: 90px;
+    color: #fff;
+    font-size: 37px;
+    text-align: center;
+    line-height: 30px;
+}
+.totop a:hover {
+    color: #eee;
+    text-decoration: none;
+}

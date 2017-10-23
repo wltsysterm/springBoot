@@ -3,85 +3,11 @@
     <meta charset="UTF-8">
     <title>default html</title>
     <style>
-        a{cursor: pointer;color: red;font-weight: bolder;}
+        /*a{cursor: pointer;color: red;font-weight: bolder;}*/
     </style>
     <style type="text/css">
-       #tabUl .glyphicon-remove{display: none;color: red;}
-       #tabUl .glyphicon-remove:hover{cursor: pointer;color: white;background-color: red;}
-       #tabUl>li[class='']>a{cursor: pointer;border: 1px solid #ddd;border-radius: 4px 4px 0 0;}
-       #tabUl>li[class='active']>a{background-color: #428bca;color: white;}
-       #tabUl>li:hover >a>i {display: block;}
-
-        /*header css*/
-       header .statisticInfo{
-           height: 45px;
-           margin-top: 30px;
-       }
-       header .statisticInfo .user{
-           float: left;
-           color: white;
-           width: 80px;
-       }
-       header .statisticInfo .user i{
-           display: inline-block;
-           height: 40px;
-           width: 40px;
-           line-height: 40px;
-           font-size: 17px;
-           text-align: center;
-           border-radius: 50px;
-           box-shadow: inset 0px 0px 1px #777;
-       }
-       header .statisticInfo .user p{
-           line-height: 16px;
-           font-size: 14px;
-           margin-top: 4px;
-           font-weight: bolder;
-       }
-       header .statisticInfo .fr,header .statisticInfo .fl{
-           width: 48%;
-       }
-       header .memberInfo{
-           margin-top: 15px;
-           color: white;
-       }
-        header .memberInfo .member,header .memberInfo>em{
-            /*height: 95px;*/
-            font-weight: bolder;
-            font-size: 20px;
-            margin-top: 20px;
-        }
-        header .memberInfo img{
-            width: 60px;
-            height: 60px;
-        }
-       header .memberInfo .downicon:hover{
-            color: red;
-           cursor: pointer;
-       }
-
-       /*toTop css*/
-       .totop {
-           position: fixed;
-           bottom: 0px;
-           right: 0px;
-           z-index: 104400;
-           background: #0993d3 !important;
-       }
-       .totop a, .totop a:visited{
-           display: block;
-           width: 60px;
-           height: 90px;
-           color: #fff;
-           font-size: 37px;
-           text-align: center;
-           line-height: 30px;
-       }
-       .totop a:hover {
-           color: #eee;
-           text-decoration: none;
-       }
     </style>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/member/member.png">
     <!--menu.css是submenu的另一种样式，是鼠标悬浮显示样式-->
     <!--<link rel="stylesheet" href="../css/menu.css">-->
     <!--menu.css是submenu的另一种样式，是鼠标点击显示样式-->
@@ -91,9 +17,10 @@
     <link rel="stylesheet" href="../lib/adminlte/css/font-awesome.min.css">
     <link rel="stylesheet" href="../lib/adminlte/css/ionicons.min.css">
     <link rel="stylesheet" href="../css/future.css">
+    <link rel="stylesheet" href="../css/bootstraplrcol.css">
 </head>
 <body>
-<div class="container w100p p0" style="min-width: 1300px;">
+<div class="container w100p p0">
     <!--header-->
     <header class="col-lg-12 col-md-12 col-sm-12 col-xs-12 h100 p0" style="background-color: black;position: fixed;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;z-index: 1000;">
         <div class="col-lg-8 col-md-6 col-sm-4 col-xs-2">
@@ -124,19 +51,22 @@
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5">
             <div class="memberInfo">
-            <img src="../img/member/member.png" class="fl">
-            <em class="fl">11111111</em>
-            <div class="member fl">
-                <div class="dropdown">
-                    <em data-toggle="dropdown" data-submenu>
-                        <i class="fa fa-caret-down fa-fw downicon"></i>
-                    </em>
+                <img src="../img/member/member.png" class="fl">
+                <em class="fl">11111111</em>
+                <div class="member fl">
+                    <div class="dropdown">
+                        <em data-toggle="dropdown" data-submenu>
+                            <i class="fa fa-caret-down fa-fw downicon"></i>
+                        </em>
 
-                    <ul class="dropdown-menu dropdown-menu-right" style="min-width: 40px;">
-                        <li><a><i class="fa fa-sign-out fa-fw" style="color: red;"></i>注销</a></li>
-                    </ul>
+                        <ul class="dropdown-menu dropdown-menu-right header-down-menu">
+                            <li><a onclick="window.location='../html/login.html'"><i class="fa fa-sign-out fa-fw"></i>注销</a></li>
+                            <li><a><i class="fa fa-sign-out fa-fw"></i>注销</a></li>
+                            <li><a><i class="fa fa-sign-out fa-fw"></i>注销</a></li>
+                            <li><a><i class="fa fa-sign-out fa-fw"></i>注销</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </header>
@@ -166,17 +96,6 @@
 <script src="../lib/bootstraptreeview/js/bootstrap-treeview.js"></script>
 <script src="../js/bootstrap-closable-tab.js"></script>
 <script language="JavaScript" type="text/javascript">
-    function changewidth(){
-        if(document.body.clientWidth<1000){
-//alert(window.screen.width);
-            document.getElementByIdx_x("main").style.width="1000px";
-        }
-        if(document.body.clientWidth>1000){
-//alert(window.screen.width);
-            document.getElementByIdx_x("main").style.width="100%";
-        }
-    }
-    window.onresize=changewidth;
 </script>
 <script>
     function add(id,name,uri){
@@ -184,6 +103,7 @@
         closableTab.addTab(item);
     }
 $(function () {
+//    点击回到头部
     $(window).scroll(function(){
         if ($(this).scrollTop()>300)
         {
@@ -194,11 +114,11 @@ $(function () {
             $('.totop').slideUp();
         }
     });
-
     $('.totop a').click(function (e) {
         e.preventDefault();
         $('body,html').animate({scrollTop: 0}, 500);
     });
+//    点击回到头部--
 
     var item = {'id':'1','name':'首页','url':'../html/studying.html','closable':false};
     closableTab.addTab(item);
