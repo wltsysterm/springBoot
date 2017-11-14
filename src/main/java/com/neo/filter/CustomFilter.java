@@ -16,7 +16,7 @@ import javax.servlet.annotation.WebFilter;
  * @author Administrator
  *
  */
-@WebFilter(filterName="customFilter",urlPatterns="/*")
+//@WebFilter(filterName="customFilter",urlPatterns="/*")
 public class CustomFilter implements Filter{
 
     @Override

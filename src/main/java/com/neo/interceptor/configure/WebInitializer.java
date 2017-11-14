@@ -18,16 +18,16 @@ import javax.servlet.ServletRegistration;
  * <p>
  * SpringBoot方式启动的话 ,可以通过配置类(类里定义servlet bean ,然后import到Application)
  */
-@Configuration
-public class WebInitializer implements WebApplicationInitializer {
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-//        context.register(MvcConfig.class);
-        context.setServletContext(servletContext);
-
-        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
-        servlet.addMapping("/api/");
-        servlet.setLoadOnStartup(1);
-    }
-}
+//@Configuration
+//public class WebInitializer implements WebApplicationInitializer {
+//    @Override
+//    public void onStartup(ServletContext servletContext) throws ServletException {
+//        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+////        context.register(MvcConfig.class);
+//        context.setServletContext(servletContext);
+//
+//        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
+//        servlet.addMapping("/api/");
+//        servlet.setLoadOnStartup(1);
+//    }
+//}

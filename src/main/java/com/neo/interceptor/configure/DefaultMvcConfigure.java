@@ -8,12 +8,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Comparator;
+import java.util.Map;
+
 /**
  * created by 魏霖涛 on 2017/10/9 0009
  * 自定义拦截器链
  */
 @Configuration
 public class DefaultMvcConfigure extends WebMvcConfigurerAdapter {
+//    @Override
+//    public void configurePathMatch(PathMatchConfigurer configurer) {
+//        configurer.setUseSuffixPatternMatch(false);
+//        configurer.setUseTrailingSlashMatch(true);
+//        configurer.setPathMatcher(new org.springframework.util.PathMatcher() {
+//            @Override
+//            public boolean isPattern(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean match(String s, String s1) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean matchStart(String s, String s1) {
+//                return false;
+//            }
+//
+//            @Override
+//            public String extractPathWithinPattern(String s, String s1) {
+//                return null;
+//            }
+//
+//            @Override
+//            public Map<String, String> extractUriTemplateVariables(String s, String s1) {
+//                return null;
+//            }
+//
+//            @Override
+//            public Comparator<String> getPatternComparator(String s) {
+//                return null;
+//            }
+//
+//            @Override
+//            public String combine(String s, String s1) {
+//                return null;
+//            }
+//        });
+//    }
     /**
      * spring boot中可以设置默认首页，当输入域名是可以自动跳转到默认指定的网页
      * @param registry
@@ -38,9 +83,9 @@ public class DefaultMvcConfigure extends WebMvcConfigurerAdapter {
          * addPathPatterns 用于添加拦截规则
          * excludePathPatterns 用户排除拦截
          */
-        registry.addInterceptor(new CustomInterceptor()).addPathPatterns("/*").excludePathPatterns("/");
-        registry.addInterceptor(new CustomInterceptor2()).addPathPatterns("/*").excludePathPatterns("/");
-        super.addInterceptors(registry);
+        registry.addInterceptor(new CustomInterceptor()).addPathPatterns("/getCityByPage").excludePathPatterns("/error");
+//        registry.addInterceptor(new CustomInterceptor2()).addPathPatterns("/*").excludePathPatterns("/");
+//        super.addInterceptors(registry);
     }
 }
 
@@ -50,20 +95,22 @@ class CustomInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object,
                                 Exception exception) throws Exception {
         //在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）
-        System.out.println("3. 整个请求结束之后被调用......CustomInterceptor1......");
+//        System.out.println("3. 整个请求结束之后被调用......CustomInterceptor1......");
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView view)
             throws Exception {
         // 请求处理之后进行调用，但是在视图被渲染之前
-        System.out.println("2. 请求处理之后进行调用，但是在视图被渲染之前......CustomInterceptor1......");
+//        System.out.println("2. 请求处理之后进行调用，但是在视图被渲染之前......CustomInterceptor1......");
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         // 在请求处理之前进行调用
         System.out.println("1. 在请求处理之前进行调用......CustomInterceptor1......");
+        String url = request.getRequestURI().toString();
+        System.out.println(url);
         // 只有返回true才会继续向下执行，返回false取消当前请求
         return true;
     }
