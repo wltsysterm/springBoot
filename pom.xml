@@ -121,6 +121,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- 创建jsp项目另外引入的包 end-->
+		<!--springboot跳转html 模版引擎-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
